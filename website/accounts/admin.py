@@ -11,7 +11,7 @@ class UserAdmin(BaseUserAdmin):
     form_tba = AdminUserCreationForm
     # displaying stuff
     list_display = ('email', 'is_superuser')
-    fieldsets = ((None, {'fields': ('full_name', 'email', 'password')}),
+    fieldsets = ((None, {'fields': ('name', 'email', 'password')}),
                 ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser',)}),)
     # UserAdmin is overriding add_fieldsets to use this attribute when creating a user.
     add_fieldsets = ((None, {'classes': ('wide',),'fields': ('email', 'password1', 'password2')}),)
