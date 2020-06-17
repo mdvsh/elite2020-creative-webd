@@ -1,0 +1,60 @@
+/* Custom Styles */
+html, body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    height: 100%;
+}
+
+h1.bang {
+    font-family: 'Bangers', cursive;
+    font-size: 74px;
+    letter-spacing: 6px;
+}
+
+nav.navbar {
+    border-top: 6px solid #6c5ce7;
+    margin-bottom: 1rem;
+  }
+
+.navbar-item.brand-text {
+  font-weight: 400;
+  font-size: large;
+}
+
+.navbar-item, .navbar-link {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.apple-type { 
+  /* Copied almost wholesale from the Apple site CSS; changed the font-stack */
+  font-size: 72px;
+  line-height: 1.0825; 
+  font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-weight: 800;
+}
+
+.apple-masked { 
+  -webkit-background-clip: text;
+  color: transparent !important;
+}
+
+.apple-masked p { 
+  display: inline;
+  font: inherit;
+}
+
+.apple-masked h2 {
+  display: inline;
+  font: inherit;
+}
+
+.apple-texture {
+  /* Set the text color to a solid, in case our super cool effects don't work.  */
+  color: #e5895f;
+  
+  background-repeat: repeat;
+  
+  background-image: url("https://www.apple.com/v/ipad-pro/aa/images/overview/hero_manifesto_bg__c0zrbe748m82_large.jpg");
+}
