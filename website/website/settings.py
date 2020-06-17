@@ -44,10 +44,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'debug_toolbar',
     'wapp',
+    'accounts',
+    'admin_dash',
+    'app_profile',
+    'jobs',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,5 +134,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_DIRS = [STATIC_DIR, ]
-
 STATIC_URL = '/static/'
+
+# Media Files (User uploaded stuff.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
+
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
+
+# Login configuration and url mapping
+LOGIN_URL = '/login'
+LOGOUT_REDIRECT_URL = '/'
+
+# Django message styles with bulma
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'is-link',
+    messages.INFO: 'is-info',
+    messages.SUCCESS: 'is-success',
+    messages.WARNING: 'is-warning',
+    messages.ERROR: 'is-danger',
+}
