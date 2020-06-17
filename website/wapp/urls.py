@@ -16,7 +16,3 @@ Including another URLconf
 
 from django.urls import path
 from wapp import views
-app_name = 'wapp'
-urlpatterns = [
-path('', views.index, name='index'),
-]
