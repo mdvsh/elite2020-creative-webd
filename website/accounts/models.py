@@ -48,14 +48,14 @@ class Team(models.Model):
 
 
 # Declartory class for a single Applicant
-GENDERS = (('MALE', 'male'), ('FEMALE', 'female'))
+GENDERS = (('MALE', 'Male'), ('FEMALE', 'Female'))
 AGE = (('kiddo', 'Kiddo'), ('teen', 'Teenager'), ('legal', 'Legal'), ('mid-life crisis', 'Mid-Life Crisis'), ('boomer', 'Boomer'))
 class Applicant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     preference = models.ForeignKey(Team, on_delete=models.SET_NULL, blank=True, null=True)
     dob = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, null=True, blank=True)
-    locn = models.CharField(_('What do you call home Comrade ?'), max_length=20, null=True, blank=True)
+    locn = models.CharField(_('Location'), max_length=20, null=True, blank=True)
     desc = models.TextField(_("Why do you want to join The Resistance Fighting Force ? "), blank=False, null=True)
     app_type = models.CharField("What type of applicant are you ?", max_length=20, choices=AGE, null=True, blank=True)
 

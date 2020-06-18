@@ -23,6 +23,8 @@ from .views import HomePage
 from accounts.views import LoginView, ApplicantReg, UpdateApplicant
 
 urlpatterns = [
+    path('applicant/', include('app_profile.urls')),
+    path('jobs/', include('jobs.urls')),
     path('login/', LoginView.as_view(extra_context={'title': 'Login To Your Account'}), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/applicant/', ApplicantReg.as_view(extra_context={'title': 'Applicant Registration'}), name='applicant_reg'),

@@ -14,14 +14,14 @@
                         <div class="field is-grouped">
                             <div class="control">
                                 {% if request.user.is_applicant %}
-                                    {% comment %} <a href="{% url 'applicant_home' %}" class="button is-warning is-rounded is-small">Skip</a> {% endcomment %}
-                                {% elif request.user.is_admin %}
+                                    <a href="{% url 'applicant_home' %}" class="button is-warning">Skip</a>
+                                {% elif request.user.is_staff %}
                                     {% comment %} To Add {% url 'admin_home' %} here once admin_dash app made. {% endcomment %}
                                     <a href="#" class="button is-warning is-rounded is-small">Skip</a>
                                 {% endif %} 
                             </div>
                             <div class="control">
-                                <input type="submit" value="Create" class="button is-rounded is-info">
+                                <input type="submit" value="Create" class="button is-info">
                             </div>
                         </div>
                     </form>

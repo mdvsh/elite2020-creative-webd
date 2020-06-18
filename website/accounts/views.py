@@ -26,11 +26,13 @@ class LoginView(LoginView):
         if nu is not None:return nu
 
         # handle login differently for admin and applicants
-        if self.request.user.is_applicant:
+        if self.request.user.is_staff:
+            # to do 
+            return '/admin/home/'
+        elif self.request.user.is_applicant:
             return '/applicant/home/'
         # if admin (later, staff maybe); redirect to admin dashboard
-        if self.request.user.is_admin:
-            return '/kkkadmin/home/'
+
 
 
 class ApplicantReg(CreateView):

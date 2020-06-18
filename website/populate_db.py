@@ -8,6 +8,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings')
 import django
 django.setup()
 from accounts.models import Team
+from jobs.models import Job
 
 def main():
     depts = ['Engineering', 'Creative Team', 'Execution', 'User Growth', 'Product']

@@ -13,14 +13,14 @@
                 </div>
                 <div class="column is-4-tablet is-10-mobile name">
                   <p>
-                    <span class="title is-bold">{{ request.user.full_name }}</span>
+                    <span class="title is-bold">{{ request.user.name }}</span>
                     <br />
-                    <a id="edit-preferences" class="button is-primary is-outlined mg-sm">
+                    <a id="edit-preferences" class="button is-primary is-small">
                       Edit Profile</a>
                     <br />
                   </p>
                   <p class="tagline">
-                      {{ request.user.applicant.about }}
+                      {{ request.user.applicant.desc }}
                   </p>
                 </div>
                 <div class="column is-2-tablet is-4-mobile has-text-centered">
@@ -43,14 +43,14 @@
     <div class="section">
         <div class="container">
             <div class="box has-background-primary">
-                <h1 class="title has-text-white">Your Applications</h1>
+                <h2 class="title has-text-white">Your Applications</h1>
             </div>
             <div class="columns">
                 <div class="column">
 
                     <table class="table is-fullwidth is-hoverable">
                         <tbody>
-                            {% for app in application_list %}
+                            {% for app in jobapplication_list %}
                                 <tr>
                                     <td width="5%">{{ forloop.counter }}</td>
                                     <td><a href="{{ app.job.get_job_abs_url }}">{{ app.job }}</a></td>

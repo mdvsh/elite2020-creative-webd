@@ -41,7 +41,7 @@ class DeleteJob(AdminRequiredMixin, DeleteView):
 
 class ApplyJob(ApplicantRequiredMixin, CreateView):
     model = JobApplication
-    form_class = JobApplicationForm
+    # form_class = JobApplicationForm
     template_name = 'jobs/job_apply.html'
     fields = ('resume', )
 

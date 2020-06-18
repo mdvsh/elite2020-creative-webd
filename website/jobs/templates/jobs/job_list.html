@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    {% for job in job_list %}
+                        <article class="media box">
+                            <figure class="media-left">
+                            <p class="image is-64x64">
+                                <img src="https://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                            </figure>
+                            <div class="media-content">
+                            <div class="content">
+                                <p>
+                                <strong><a href="{{ job.get_job_abs_url }}"> {{ job.title }} </a></strong> <small>@KoolKidsKlan</small>
+                                    
+                                
+                                <br>
+                                {{ job.desc|truncatewords:30 }}
+                                </p>
+                                <nav class="level is-mobile">
+                                        <div class="level-left">
+                                        <a class="level-item">
+                                            <span>{% if job.pay %} {{ job.pay }} W$ {% else %} Confidential {% endif %}</span>
+                                        </a>
+                                        </div>
+                                    </nav>
+                            </div>
+                            
+                            </div>
+                    
+                        </article>
+                        
+                    {% empty %}
+                        <h1 class="title is-3">Sorry! No jobs Yet.</h1>
+                    {% endfor %}
+                </div>
+
+                <div class="column is-hidden-touch">
+                    <figure class="image is-5by3">
+                        <img src="{% static 'imgs/job_offers_illus_1.svg' %}" alt="Illustration of Job idk..">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    
