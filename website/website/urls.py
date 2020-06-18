@@ -19,9 +19,15 @@ from django.urls import path, include
 from wapp import views
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
+
 from .views import HomePage
+from accounts.views import LoginView, ApplicantReg, UpdateApplicant
 
 urlpatterns = [
+    path('login/', LoginView.as_view(extra_context={'title': 'Login To Your Account'}), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('register/applicant/', ApplicantReg.as_view(extra_context={'title': 'Applicant Registration'}), name='applicant_reg'),
+    path('reg/profile/<int:pk>/', UpdateApplicant.as_view(extra_context={'title': 'Complete your Applicant Profile'}), name='reg_profile'),
     path('', HomePage.as_view(), name="home"),
     path('admin/', admin.site.urls),
 ]

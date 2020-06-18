@@ -16,7 +16,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(_('Staff'), default=False)
     is_active = models.BooleanField(_('Active'), default=True)
     date_joined = models.DateTimeField(_('Date Joined'), auto_now_add=True)
-    mngr = UserManager()
+    objects = UserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
@@ -29,7 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def clean(self):
         super().clean() 
-        self.email = self.__class__.mngr.normalize_email(self.email)
+        self.email = self.__class__.objects.normalize_email(self.email)
 
 # We'll have job opening for different departments in the KKK. Declaratory class for that.
 class Department(models.Model):

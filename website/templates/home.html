@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="section hero is-medium has-text-centered">
+        <div class="container">
+        <div class="columns">
+            <div class="column is-three-fifths">
+                <div class="apple-masked apple-texture apple-type">
+                    <h2>THE RESISTANCE FIGHTING FORCE.</h2>
+                </div>
+            </div>
+            <div class="column">
+                <figure class="image">
+                <img src="{% static 'imgs/peeps.jpg' %}">
+                </figure>                        
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -9,7 +9,7 @@ User = get_user_model()
 
 class ApplicantRegForm(forms.ModelForm):
     password1 = forms.CharField(label="Enter Password", required=True, widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Enter Password Again.", required=True, widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Confirm Password.", required=True, widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -25,7 +25,7 @@ class ApplicantRegForm(forms.ModelForm):
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        foo = User.objects.filter('email')
+        foo = User.objects.filter(email=email)
         if foo.exists():raise forms.ValidationError("The provided email already exists in the Database.")
         return email
 
@@ -54,7 +54,7 @@ class LoginForm(AuthenticationForm):
 # For the admin dashboard stuff
 class AdminUserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label="Enter Password", required=True, widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Enter Password Again.", required=True, widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Confirm Password.", required=True, widget=forms.PasswordInput)
 
     class Meta:
         model = User
