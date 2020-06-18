@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User, Applicant, Department
+from .models import User, Applicant, Team
 from .forms import AdminUserCreationForm, AdminUserChangeForm 
 # Register your models here.
 
@@ -24,4 +24,4 @@ admin.site.register(User, UserAdmin)
 # It's not needed actually
 # admin.site.unregister(Group)
 admin.site.register(Applicant)
-admin.site.register(Department)
+admin.site.register(Team)

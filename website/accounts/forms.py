@@ -4,12 +4,14 @@ from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from .models import Applicant
+from captcha.fields import ReCaptchaField
 
 User = get_user_model()
 
 class ApplicantRegForm(forms.ModelForm):
     password1 = forms.CharField(label="Enter Password", required=True, widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirm Password.", required=True, widget=forms.PasswordInput)
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
@@ -49,7 +51,6 @@ class ApplicantForm(forms.ModelForm):
 
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(max_length=144, widget=forms.EmailInput(attrs={'autofocus': True}))
-
 
 # For the admin dashboard stuff
 class AdminUserCreationForm(forms.ModelForm):

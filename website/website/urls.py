@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from wapp import views
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
 
