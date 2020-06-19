@@ -1,0 +1,25 @@
+{% extends "admin_dash/base.html" %}
+
+{% block page_title %} {{ title }} {% endblock %}
+
+{% block dashcontent %}
+
+    <div class="columns">
+        <div class="column box">
+                <h1 class="title is-4">Post a new Job Opening for the RFF.</h1>
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form.media }}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {% include 'base/form.html' with btn_text='Login' %}
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <input type="submit" class="button is-primary" value="Create">
+                        </div>
+                    </div>
+                </form>      
+        </div>
+    </div>
+
+{% endblock dashcontent %}
+    

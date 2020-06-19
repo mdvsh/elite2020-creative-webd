@@ -1,5 +1,12 @@
 {% load static %}
+<script>
+    var dropdown = document.querySelector('.dropdown');
+    dropdown.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+    });
+</script>
 <script src='{% static "js/jquery-3.3.1.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
 <script async type="text/javascript" src="{% static 'js/hamburger.js' %}"></script>
-<script src='{% static "js/three.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
-<script src='{% static "js/vanta.globe.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
+{% comment %} <script src='{% static "js/three.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
+<script src='{% static "js/vanta.globe.min.js" %}' type="text/javascript" crossorigin="anonymous"></script> {% endcomment %}

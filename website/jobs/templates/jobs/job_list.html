@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3 is-pulled-left is-hidden-touch">
+                    <p class="title is-5">Filter By:</p>
+                    <div class="dropdown">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                            <span>Teams</span>
+                            <span class="icon is-small"><i class="fas fa-angle-down" aria-hidden="true"></i></span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                            {% for t in dist_teams %}
+                                <div class="dropdown-content">
+                                    <a href="#" class="dropdown-item">{{ t }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="title is-6 mt-4">Workplace Culture@KKK</p><br>
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis lacus vitae tincidunt mattis. In vel sapien ullamcorper, dictum magna et, elementum ex. Nullam arcu mi, finibus et diam eu, consequat dapibus magna. Maecenas faucibus purus lorem, at posuere nulla blandit quis. Vestibulum sed pharetra orci, ac laoreet ex. Praesent.
+                    </p>
+                </div>
+                <div class="column is-8 is-offset-1">
+                    <h1 class="title is-3">Current Openings</h1>
+                    <p class="subtitle is-4">In The RFF</p>
+                    {% for job in job_list %}
+                        <article class="media box">
+                            <figure class="media-left">
+                            <p class="image is-48x48">
+                                {% if job.team.name == 'Engineering' %}
+                                <img src="https://img.icons8.com/color/48/000000/code.png"/>
+                                {% elif job.team.name == 'Creative'%}
+                                <img src="https://img.icons8.com/color/48/000000/design.png"/>
+                                {% elif job.team.name == 'Operations'%}
+                                <img src="https://img.icons8.com/color/48/000000/leadership.png"/>
+                                {% elif job.team.name == 'User Growth'%}
+                                <img src="https://img.icons8.com/color/48/000000/user-engagement-male.png"/>
+                                {% elif job.team.name == 'Product'%}
+                                <img src="https://img.icons8.com/color/48/000000/networking-manager.png"/>
+                                {% endif %}
+                            </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p><strong><a href="{{ job.get_absolute_url }}"> {{ job.title }} </a></strong><small>@KoolKidsKlan</small>
+                                    <br>{{ job.desc|truncatewords:30 }}</p>
+                                    <nav class="level is-mobile">
+                                        <div class="level-left">
+                                            <a class="level-item"><span>Salary:{% if job.pay %} {{ job.pay }} W$ {% else %} Confidential {% endif %}</span>                                        
+                                            </a>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </article>
+                        
+                    {% empty %}
+                        <h1 class="title is-3">No Job Opening for Now.</h1>
+                        <p class="subtitle is-4">Check back later.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

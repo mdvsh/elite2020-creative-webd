@@ -69,6 +69,10 @@ nav.navbar {
   margin-top: 80px;
 }
 
+-mg.top.pop {
+  margin-top: 40px;
+}
+
 .bg {
   background-image: url("/static/imgs/cool-background-3.svg");
   height: 100%;
@@ -81,3 +85,7 @@ nav.navbar {
   overflow:hidden;
 }
 
+.hero.is-small {
+  border-radius: 10px;
+  overflow:hidden;
+}

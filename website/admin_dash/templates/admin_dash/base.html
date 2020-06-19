@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<section>
+    <div class="container mg-top">
+        {% comment %} <h1 class="subtitle is-4 is-hidden-touch">Welcome {{ request.user.name}}</h1> {% endcomment %}
+        <div class="columns">
+            <div class="column is-2 is-hidden-touch">
+                {% include 'admin_dash/sidebar/sidebar.html' %}
+            </div>
+            <div class="column is-9">
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                        <div class="title">Dashboard <span class="subtitle">{% block page_title %}{% endblock %}</span></div>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                        <button type="button" class="button is-small">
+                            <script> document.write(new Date().toDateString()); </script>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+                
+                {% block dashcontent %}
+                    
+                {% endblock dashcontent %}
+                    
+            
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

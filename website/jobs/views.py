@@ -10,7 +10,14 @@ from accounts.mixins import ApplicantRequiredMixin, AdminRequiredMixin
 # Create your views here.
 class JobList(ListView):
     model = Job
-
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        d = []
+        dt = Job.objects.all()
+        for j in dt:
+            d.append(j.team.name)
+        ctx['dist_teams'] = list(set(d))
+        return ctx
 
 class JobDetail(DetailView):
     model = Job
@@ -19,7 +26,7 @@ class JobDetail(DetailView):
 
 class CreateJob(AdminRequiredMixin, CreateView):
     model = Job
-    fields = ('titile', 'team', 'work_type', 'age', 'pay', 'desc',)
+    fields = ('title', 'team', 'work_type', 'age', 'pay', 'desc',)
     
     def get_context_data(self, **kwargs):
         ctx = super(CreateJob, self).get_context_data(**kwargs)
@@ -32,7 +39,7 @@ class CreateJob(AdminRequiredMixin, CreateView):
 
 class UpdateJob(AdminRequiredMixin, UpdateView):
     model = Job
-    fields = ('titile', 'team', 'work_type', 'age', 'pay', 'desc',)
+    fields = ('title', 'team', 'work_type', 'age', 'pay', 'desc',)
 
 
 class DeleteJob(AdminRequiredMixin, DeleteView):
@@ -41,7 +48,7 @@ class DeleteJob(AdminRequiredMixin, DeleteView):
 
 class ApplyJob(ApplicantRequiredMixin, CreateView):
     model = JobApplication
-    form_class = JobApplicationForm
+    # form_class = JobApplicationForm
     template_name = 'jobs/job_apply.html'
     fields = ('resume', )
 
@@ -65,3 +72,21 @@ class ApplyJob(ApplicantRequiredMixin, CreateView):
         else:
             messages.info(self.request, prompt)
         return redirect('job', job.slug)
+
+class AdminJobs(AdminRequiredMixin, ListView):
+    template_name = 'admin_dash/job_list.html'
+    def get_queryset(self):
+        return Job.objects.all()
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        return ctx
+
+
+class AdminJobsDetail(AdminRequiredMixin, DetailView):
+    model = Job
+    template_name = 'admin_dash/job_info.html'
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        apps = JobApplication.objects.filter(job=self.get_object())
+        ctx['applications'] = apps
+        return ctx

@@ -7,20 +7,10 @@
         <div class="container">
 
             <div class="columns is-mobile is-multiline">
-                <div class="column is-2">
-                  <span class="header-icon user-profile-image">
-                    <img src="http://placehold.it/300x225" alt="avatar">
-                </div>
                 <div class="column is-4-tablet is-10-mobile name">
-                  <p>
-                    <span class="title is-bold">{{ request.user.full_name }}</span>
-                    <br />
-                    <a id="edit-preferences" class="button is-primary is-outlined mg-sm">
-                      Edit Profile</a>
-                    <br />
-                  </p>
-                  <p class="tagline">
-                      {{ request.user.applicant.about }}
+                <h1 class="title is-3">{{ request.user.name }}</h1>
+                  <p class="subtitle is-5">
+                      {{ request.user.applicant.desc }}
                   </p>
                 </div>
                 <div class="column is-2-tablet is-4-mobile has-text-centered">
@@ -42,19 +32,19 @@
 
     <div class="section">
         <div class="container">
-            <div class="box has-background-primary">
-                <h1 class="title has-text-white">Your Applications</h1>
+            <div class="box has-background-info">
+                <h2 class="title has-text-white">Your Applications</h1>
             </div>
             <div class="columns">
                 <div class="column">
 
                     <table class="table is-fullwidth is-hoverable">
                         <tbody>
-                            {% for app in application_list %}
+                            {% for japp in jobapplication_list %}
                                 <tr>
                                     <td width="5%">{{ forloop.counter }}</td>
-                                    <td><a href="{{ app.job.get_job_abs_url }}">{{ app.job }}</a></td>
-                                    <td><a class="button is-small is-info" href="#">{{ app.status }}</a></td>
+                                    <td><a href="{{ japp.job.get_absolute_url }}">{{ japp.job }}</a></td>
+                                    <td><a class="button is-small is-info" href="#">{{ japp.status }}</a></td>
                                 </tr>
                             {% empty %}
                                 <h1 class="title">Sed. You have no Applications Yet!.</h1>
