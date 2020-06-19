@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="section hero is-small has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-2">Gratam Admin Dashboard {{ request.user}}</h1>
+                {{ request.user.is_authenticated }}
+                <h2 class="subtitle">{{request.user.applicant.about}}</h2>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% comment %} Not Needed Anymore {% endcomment %}

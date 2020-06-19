@@ -1,8 +1,8 @@
 {% load static %}
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="">
+            <a class="navbar-item" href="{% url 'home' %}">
             <img src="{% static 'imgs/logo.svg' %}">
             </a>
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -13,18 +13,30 @@
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">Home</a>
+                <a class="navbar-item" href="{% url 'home' %}">Home</a>
                 <a class="navbar-item">About</a>
                 <a class="navbar-item">Perks</a>
-                <a class="navbar-item">Jobs</a>
+                <a class="navbar-item" href="{% url 'jobs' %}">Jobs</a>
             </div>
 
             <div class="navbar-end">
+                {% if request.user.is_staff %}
+                <a href="{% url 'admin_home' %}" class="navbar-item">{{ request.user.name }}</a>
+                {% else %}
+                <a href="{% url 'applicant_home' %}" class="navbar-item">{{ request.user.name }}</a>
+                {% endif %}
                 <div class="navbar-item">
                     <div class="buttons">
-                    <a class="button is-white is-small">Log in</a>
-                    <a class="button is-info is-small is-rounded"><strong>Join Us</strong></a>
-                    <a class="button is-small is-warning is-rounded">(Admin) Dash</a>
+                    {% if not request.user.is_authenticated %}
+                    <a class="button is-small is-warning is-rounded" href="{% url 'login' %}">Log in</a>
+                    <a class="button is-info is-small is-rounded" href="{% url 'applicant_reg' %}"><strong>Join Us</strong></a>
+                    {% comment %} <a class="button is-small is-warning is-rounded">(Admin) Dash</a> {% endcomment %}
+                    {% else %}
+                    {% if request.user.is_staff %}
+                        <a href="{% url 'admin_home' %}" class="button is-small is-info is-rounded">(Admin) Dash</a>   
+                    {% endif %}
+                    <a class="button is-small is-warning is-rounded" href="{% url 'logout' %}">Log Out</a>
+                    {% endif %}
                     </div>
                 </div>
             </div>

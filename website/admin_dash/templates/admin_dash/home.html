@@ -1,0 +1,75 @@
+{% extends "admin_dash/base.html" %}
+
+{% block page_title %} Home {% endblock %}
+
+{% block dashcontent %}
+
+<nav class="level is-mobile">
+    <div class="level-item has-text-centered box">
+        <div>
+        <p class="heading">Current Openings</p>
+        <p class="title">{{ job_list|length }}</p>
+        </div>
+    </div>
+    <div class="level-item has-text-centered box">
+        <div>
+        <p class="heading">Applicants</p>
+        <p class="title">{{ num_apps }}</p>
+        </div>
+    </div>
+</nav>
+
+<div class="columns">
+    <div class="column is-6">
+        <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+            Jobs
+            </p>
+        </header>
+        <div class="card-table">
+            <div class="content">
+                <table class="table is-fullwidth is-striped">
+                    <tbody>
+                        {% for job in job_list|slice:':5' %}
+                        <tr>
+                            {% if job.team.name == 'Engineering' %}
+                            <td width="5%"><i class="fa fa-code"></i></td>
+                            {% elif job.team.name == 'Creative'%}
+                            <td width="5%"><i class="fa fa-paint-brush"></i></td>
+                            {% elif job.team.name == 'Operations'%}
+                            <td width="5%"><i class="fa fa-cogs"></i></td>
+                            {% elif job.team.name == 'User Growth'%}
+                            <td width="5%"><i class="fa fa-user-circle"></i></td>
+                            {% elif job.team.name == 'Product'%}
+                            <td width="5%"><i class="fa fa-file"></i></td>
+                            {% endif %}
+                            <td><a>{{ job }}</a></td>
+                            <td><a class="button is-small is-primary" href="{% url 'admin_job_info' job.pk %}">View</a></td>
+                        </tr>
+                        {% empty %}
+                            <h1>You have not Posted Jobs Yet!</h1>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer class="card-footer">
+            <a href="{% url 'admin_jobs' %}" class="card-footer-item">View All</a>
+        </footer>
+        </div>
+    </div>
+
+    <div class="column is-6">
+        <article class="message is-info">
+        <div class="message-header">
+            <p>Message from HR</p>
+        </div>
+            <div class="message-body">
+                <b>Organisation's Terms of Service.</b><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock dashcontent %}
+    

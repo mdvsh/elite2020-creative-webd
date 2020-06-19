@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="section hero is-medium has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <p class="subtitle"><i><b>So you've chosen resistance?</b></i></p>
+                <h1 class="title is-2">Welcome {{ request.user}}!</h1>
+                {{ request.user.is_authenticated }}
+                <h2 class="subtitle">{{request.user.applicant.about}}</h2>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+    
+                
+{% comment %} Not needed anymore. {% endcomment %}

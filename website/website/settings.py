@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -34,6 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+RECAPTCHA_PUBLIC_KEY='6LfKSKYZAAAAANpgAlQ2Phn3w8A9OMQ0tHHYG1_d'
+RECAPTCHA_PRIVATE_KEY='6LfKSKYZAAAAAJDzNKUsdaJX5p-PF0yine0PI4sO'
 
 # Application definition
 
@@ -46,10 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'debug_toolbar',
-    'wapp',
+    'captcha',
     'accounts',
     'admin_dash',
     'app_profile',
+    'ckeditor',
     'jobs',
 ]
 
@@ -135,6 +137,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'static_root')
 
 # Media Files (User uploaded stuff.)
 MEDIA_URL = '/media/'

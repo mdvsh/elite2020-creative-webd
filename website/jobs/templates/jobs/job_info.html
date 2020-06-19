@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <p class="title">{{ job.title }}</p>
+                    <p class="subtitle">@KoolKidsKlan</p>
+                    {% if request.user.is_authenticated and not user.is_staff%}
+                    <form action="{% url 'job_apply' %}" method="get">
+                        <input type="hidden" name="job_id" value="{{ job.pk }}">
+                        <input type="submit" class="button is-primary" value="Apply for Job" >
+                    </form>
+                    {% endif %}
+                </div>
+                
+            </div>
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            {% autoescape off %}
+                            {{ job.desc }}
+                            {% endautoescape %}
+                        </p>
+                    </div>
+                    <div class="content is-hidden-mobile">
+                        <figure class="image is-3by2">
+                            {% if job.team.name == 'Engineering' %}
+                            <img src="{% static 'imgs/swe.svg' %}" alt="Engineering">
+                            {% elif job.team.name == 'Creative'%}
+                            <img src="{% static 'imgs/des.svg' %}" alt="Creative">
+                            {% elif job.team.name == 'Operations'%}
+                            <img src="{% static 'imgs/leadership.svg' %}" alt="Operations">
+                            {% elif job.team.name == 'User Growth'%}
+                            <img src="{% static 'imgs/hr.svg' %}" alt="User Growth">
+                            {% elif job.team.name == 'Product'%}
+                            <img src="{% static 'imgs/pm.svg' %}" alt="Product">
+                            {% endif %}
+                        </figure>
+                    </div>
+                </div>
+                <div class="column">
+                <article class="notification">
+                        <div class="content">
+                            <p class="title">Summary</p>
+                            <div class="content">
+                                <p class="title is-5">Organisation</p>
+                                <p class="subtitle is-6">Resistance Fighting Force</p>
+                            </div>
+
+                            <div class="content">
+                                <p class="title is-5">Team</p>
+                                <p class="subtitle is-6">{{ job.team }}</p>
+                            </div>
+                            <div class="content">
+                                <p class="title is-5">Work Type</p>
+                                <p class="subtitle is-6">{{ job.work_type }}</p>
+                            </div>
+                            <div class="content">
+                                <p class="title is-5">Salary (in W$)</p>
+                                <p class="subtitle is-6">{{ job.pay }}</p>
+                            </div>
+                            <div class="content">
+                                <p class="title is-5">Job For</p>
+                                <p class="subtitle is-6">{{ job.age }}</p>
+                            </div>
+                            
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

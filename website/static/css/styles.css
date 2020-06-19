@@ -12,6 +12,11 @@ h1.bang {
     letter-spacing: 6px;
 }
 
+.navbar.is-transparent {
+  background-color: transparent;
+  background-image: none;
+}
+
 nav.navbar {
     border-top: 6px solid #6c5ce7;
     margin-bottom: 1rem;
@@ -57,4 +62,30 @@ nav.navbar {
   background-repeat: repeat;
   
   background-image: url("https://www.apple.com/v/ipad-pro/aa/images/overview/hero_manifesto_bg__c0zrbe748m82_large.jpg");
+}
+
+
+.mg-top {
+  margin-top: 80px;
+}
+
+-mg.top.pop {
+  margin-top: 40px;
+}
+
+.bg {
+  background-image: url("/static/imgs/cool-background-3.svg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card {
+  border-radius: 10px;
+  overflow:hidden;
+}
+
+.hero.is-small {
+  border-radius: 10px;
+  overflow:hidden;
 }

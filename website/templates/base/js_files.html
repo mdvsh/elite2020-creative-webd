@@ -1,5 +1,22 @@
 {% load static %}
 <script src='{% static "js/jquery-3.3.1.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
+<script src='{% static "js/ajax.js" %}' type="text/javascript" crossorigin="anonymous"></script>
+<script>
+    {% comment %} $(document).ready(function(){
+        $("input[type='button']").click(function(){
+            var radioValue = $("input[name='stat']:checked").val();
+            if(radioValue){
+                alert("Status - " + radioValue);
+            }
+        });
+    }); {% endcomment %}
+    var dropdown = document.querySelector('.dropdown');
+    dropdown.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+    });
+
+</script>
 <script async type="text/javascript" src="{% static 'js/hamburger.js' %}"></script>
-<script src='{% static "js/three.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
-<script src='{% static "js/vanta.globe.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
+{% comment %} <script src='{% static "js/three.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
+<script src='{% static "js/vanta.globe.min.js" %}' type="text/javascript" crossorigin="anonymous"></script> {% endcomment %}

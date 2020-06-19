@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+    <div class="section">
+        <div class="container">
+            <div class="box has-background-info">
+                <h2 class="title has-text-white">Your Applications</h1>
+            </div>
+            <div class="columns is-multilines">
+                <div class="column is-7">
+                    <table class="table is-fullwidth is-hoverable">
+                        <tbody>
+                            {% for japp in jobapplication_list %}
+                                <tr>
+                                    <td width="5%" class="subtitle">{{ forloop.counter }}</td>
+                                    <td><a href="{{ japp.job.get_absolute_url }}" class="subtitle">{{ japp.job }}</a></td>
+                                    <td><a class="button is-small is-info" href="#" class="subtitle">{{ japp.status }}</a></td>
+                                </tr>
+                            {% empty %}
+                                <h1 class="title">Sed. You have no Applications Yet!.</h1>
+                                <p class="subtitle is-4">Every applicant makes a difference. <b>APPLY NOW!</b></p>
+                            {% endfor %}
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="column is-5 is-hidden-touch">
+                    <figure class="image is-3by2">
+                        <img src="{% static 'imgs/int.svg' %}" alt="Job something smh">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+    

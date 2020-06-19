@@ -1,0 +1,25 @@
+{% extends 'form_base.html' %}
+{% load static %}
+{% block content %}
+    <section class="section is-fullheight">
+        <div class="container mg-top">
+            <div class="columns">
+                <div class="column is-half card" style="text-align:left">
+                    <h1 class="title is-4">
+                        {% if title %}{{ title }}{% endif %}
+                    </h1>
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        {% include 'base/form.html' with btn_text='Login' %}
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <input type="submit" value="Login" class="button is-info">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
