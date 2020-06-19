@@ -5,36 +5,61 @@
 {% block dashcontent %}
 
 		<section class="hero is-light has-text-centered">
-				<div class="hero-body">
-					<div class="container">
-						<h1 class="title">
-							{{ job.title }}
-						</h1>
-						<h2 class="subtitle">
-							Manage your Applicants.
-						</h2>
-					</div>
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">
+						{{ job.title }}
+					</h1>
+					<h2 class="subtitle">
+						Manage your Applicants.
+					</h2>
 				</div>
+			</div>
 		</section>
 
 		<table class="table is-fullwidth is-striped is-hoverable">
-				<thead>
-					<tr>
-							<th>SNo.</th>
-							<th>Applicant Name</th>
-							<th>Resume</th>
-							<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for app in applications %}
-					<tr>
-							<td width="5%">{{forloop.counter}}</td>
-							<td><a href="{% url 'admin_job_info' job.pk %}">{{ app.applicant.user.name }}</a></td>
-							<td><a href="{{ app.resume.url }}">Download Resume</a></td>
-							<td><a class="button is-small is-primary" href="#">{{ app.status }}</a></td>
-					</tr>
-				</tbody>
+			<thead>
+				<tr>
+					<th>SNo.</th>
+					<th>Applicant Name</th>
+					<th>Resume</th>
+					<th>Current Status</th>
+					<th>Change Status To</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for app in applications %}
+				<tr>
+					<td width="5%">{{forloop.counter}}.</td>
+					<td><a href="{% url 'admin_job_info' job.pk %}">{{ app.applicant.user.name	 }}</a></td>
+					<td><a href="{{ app.resume.url }}">Download Resume</a></td>
+					<td>
+						<a class="button is-small is-primary is-rounded" href="#" id="statu">{{ app.status }}</a>
+					</td>
+					<td>
+						<div class="field is-grouped">	
+							<button class="button is-small is-warning is-rounded mr-2" id="stat1" data-upstat="shortlisted" data-appid="{{ app.id }}" type="button">
+								<span class="icon is-small">
+								<i class="fas fa-pause-circle"></i>
+								</span>
+								<span>Shortlist</span>
+							</button>
+							<button class="button is-small is-success is-rounded mr-2" id="stat2" data-upstat="accepted" data-appid="{{ app.id }}" type="button">
+								<span class="icon is-small">
+								<i class="fas fa-check-circle"></i>
+								</span>
+								<span>Accept</span>
+							</button>
+							<button class="button is-small is-danger is-rounded" id="stat3" data-upstat="rejected" data-appid="{{ app.id }}" type="button">
+								<span class="icon is-small">
+								<i class="fas fa-times-circle"></i>
+								</span>
+								<span>Reject</span>
+							</button>
+						</div>					
+					</td>
+				</tr>
+			</tbody>
 			{% empty %}
 					<h1 class="title is-5 mt-4">No Applications Yet!</h1>
 			{% endfor %}

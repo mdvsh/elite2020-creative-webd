@@ -23,7 +23,6 @@ class JobDetail(DetailView):
     model = Job
     template_name = 'jobs/job_info.html'
 
-
 class CreateJob(AdminRequiredMixin, CreateView):
     model = Job
     fields = ('title', 'team', 'work_type', 'age', 'pay', 'desc',)

@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.generic import TemplateView
 from jobs import views as jobviews
-from .views import AdminHome
+from .views import AdminHome, UpdateStatusView
 
 urlpatterns = [
     path('job/delete/<int:pk>/', jobviews.DeleteJob.as_view(extra_context={'title': 'Delete Job'}), name='job_delete'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('job/<int:pk>', jobviews.AdminJobsDetail.as_view(), name='admin_job_info'),
     path('jobs/', jobviews.AdminJobs.as_view(), name='admin_jobs'),
     path('home/', AdminHome.as_view(), name='admin_home'),
+    path('update_status/', UpdateStatusView.as_view(), name="update_status")
 ]
