@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from ckeditor.fields import RichTextField
-
 from accounts.models import Applicant, Team
 User = settings.AUTH_USER_MODEL
 
