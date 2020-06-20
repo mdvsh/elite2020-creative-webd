@@ -7,6 +7,8 @@ from .models import Job, JobApplication
 from .forms import JobApplicationForm
 from accounts.mixins import ApplicantRequiredMixin, AdminRequiredMixin
 
+from django.db.models import Q
+
 # Create your views here.
 class JobList(ListView):
     model = Job
@@ -69,7 +71,7 @@ class ApplyJob(ApplicantRequiredMixin, CreateView):
             form.save()
             messages.success(self.request, prompt)
         else:
-            messages.info(self.request, prompt)
+            messages.warning(self.request, prompt)
         return redirect('job', job.slug)
 
 class AdminJobs(AdminRequiredMixin, ListView):
@@ -86,6 +88,6 @@ class AdminJobsDetail(AdminRequiredMixin, DetailView):
     template_name = 'admin_dash/job_info.html'
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        apps = JobApplication.objects.filter(job=self.get_object())
+        apps = JobApplication.objects.filter(~Q(status='rejected') & ~Q(status='accepted'))
         ctx['applications'] = apps
         return ctx
