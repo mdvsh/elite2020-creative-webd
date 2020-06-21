@@ -7,13 +7,9 @@ from .models import Job, JobApplication
 from .forms import JobApplicationForm
 from accounts.mixins import ApplicantRequiredMixin, AdminRequiredMixin
 
-from django.db.models import Q
-from django.http import HttpResponse
-from .sfilter import JobFilter
-
 # Create your views here.
 class JobList(ListView):
-    model = Job    
+    model = Job
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         d = []
@@ -21,15 +17,6 @@ class JobList(ListView):
         for j in dt:
             d.append(j.team.name)
         ctx['dist_teams'] = list(set(d))
-        # fby = (self.request.GET.get('team'))
-        # if fby != None:
-        #     ctx['job_lis'] = Job.objects.filter(team__slug=fby)
-        #     print(ctx['job_lis'])
-        ctx['job_lis'] = dt
-        # print(ctx['job_lis'])
-        job_filter = JobFilter(self.request.GET, queryset=dt)
-        ctx['filter'] = job_filter
-
         return ctx
 
 class JobDetail(DetailView):
@@ -79,13 +66,10 @@ class ApplyJob(ApplicantRequiredMixin, CreateView):
             applicant = self.request.user.applicant
             form.instance.applicant = applicant
             form.instance.job = job
-            if applicant.app_type == job.age:
-                form.save()
-                messages.success(self.request, prompt)
-            else:
-                messages.error(self.request, "You aren't eligible for this opening. Required Age Group : {} , Your Age Group : {}".format(job.age, applicant.app_type))
+            form.save()
+            messages.success(self.request, prompt)
         else:
-            messages.warning(self.request, prompt)
+            messages.info(self.request, prompt)
         return redirect('job', job.slug)
 
 class AdminJobs(AdminRequiredMixin, ListView):
@@ -102,6 +86,6 @@ class AdminJobsDetail(AdminRequiredMixin, DetailView):
     template_name = 'admin_dash/job_info.html'
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        apps = JobApplication.objects.filter(~Q(status='rejected') & ~Q(status='accepted'))
+        apps = JobApplication.objects.filter(job=self.get_object())
         ctx['applications'] = apps
         return ctx

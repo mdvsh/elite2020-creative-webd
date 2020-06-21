@@ -8,9 +8,6 @@
                     <h1 class="title is-4">
                         {% if title %}{{ title }}{% endif %}
                     </h1>
-                    {% if form.errors %}
-                        <p class="help is-danger">The entered email and password combination is not correct.</p>
-                    {% endif %}
                     <form action="" method="post" novalidate>
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ next }}">

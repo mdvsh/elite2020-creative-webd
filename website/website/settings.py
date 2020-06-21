@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'captcha',
     'accounts',
-    'django_filters',
     'admin_dash',
     'app_profile',
     'ckeditor',

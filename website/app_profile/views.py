@@ -14,3 +14,4 @@ class ApplicantHome(ApplicantRequiredMixin, ListView):
         applicant = self.request.user.applicant
         query_set = JobApplication.objects.filter(applicant=applicant)
         return query_set
+    

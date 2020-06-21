@@ -2,106 +2,35 @@
 {% load static %}
 
 {% block content %}
-{% load static %}
+
 
     <div class="section">
         <div class="container">
-            <div class="columns">
-            {% if jobapplication_list %}
-                <div class="column is-4 is-6-tablet is-hidden-mobile">
-                {% for japp in jobapplication_list|slice:':1' %}
-                    <div class="card">
-                    <div class="card-content">
-                        <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-96x96">
-                            {% if japp.applicant.gender == 'MALE' or japp.applicant.gender == 'Male' %}
-                                <img src="{% static 'imgs/male_user.svg' %}" alt="Placeholder image">
-                            {% elif japp.applicant.gender == 'FEMALE' or  japp.applicant.gender == 'Female' %}
-                                <img src="{% static 'imgs/fem_user.svg' %}" alt="Placeholder image">
-                            {% else %}
-                                <img src="https://via.placeholder.com/150" alt="Placeholder image">
-                            {% endif %}
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <p class="title is-4">{{ japp.applicant.user.name }}</p>
-                            <p class="subtitle is-6">{{ japp.applicant.user.email }}</p>
-                        </div>
-                        </div>
-
-                        <div class="content">
-                        <p class="subtitle is-5">Reason for joining The RFF.</p>
-                        <p>{{ japp.applicant.desc }}</p>
-                        <p class="content">
-                        <b>Location :</b>  
-                        {{ japp.applicant.locn }}<br>
-                        <b>Applicant Age :</b>
-                       {{ japp.applicant.app_type }} <br>
-                        <b>Date of Birth :</b>  
-                        <time datetime="2016-1-1">{{ japp.applicant.dob|date:'d-m-Y' }}</time> <br>
-                        <b>Preferred Work Type :</b>
-                        {{ japp.applicant.preference }}
-                        </p>
-                        </div>
-                    </div>
-                    </div>
-                {% endfor %}
-                </div>
-            {% endif %}
-                {% if not japp in jobapplication_list %}
-                    <div class="column">
-                {% else %}
-                    <div class="column is-8 is-6-tablet">
-                {% endif %}
-                    <div class="box has-background-info">
-                        <h2 class="title has-text-white">Your Applications</h1>
-                    </div>
+            <div class="box has-background-info">
+                <h2 class="title has-text-white">Your Applications</h1>
+            </div>
+            <div class="columns is-multilines">
+                <div class="column is-7">
                     <table class="table is-fullwidth is-hoverable">
                         <tbody>
                             {% for japp in jobapplication_list %}
                                 <tr>
-                                    <td width="5%">{{ forloop.counter }}</td>
-                                    <td><a href="{{ japp.job.get_absolute_url }}">{{ japp.job }}</a></td>
-                                    <td>
-                                    {% if japp.status == 'accepted' %}
-                                    <button class="button is-small is-success">
-                                        <span class="icon is-small">
-                                        <i class="fas fa-check-circle"></i>
-                                        </span>
-                                        <span>Accepted</span>
-                                    </button>
-                                    {% elif japp.status == 'applied' %}
-                                    <button class="button is-small is-link">
-                                        <span class="icon is-small">
-                                        <i class="fas fa-file-upload"></i>
-                                        </span>
-                                        <span>Applied</span>
-                                    </button>
-                                    {% elif japp.status == 'shortlisted' %}
-                                    <button class="button is-small is-warning">
-                                        <span class="icon is-small">
-                                        <i class="fas fa-pause-circle"></i>
-                                        </span>
-                                        <span>Shortlisted</span>
-                                    </button>
-                                    {% elif japp.status == 'rejected' %}
-                                    <button class="button is-small is-danger">
-                                        <span class="icon is-small">
-                                        <i class="fas fa-times-circle"></i>
-                                        </span>
-                                        <span>Rejected</span>
-                                    </button>
-                                    {% endif %}
-                                    </td>
+                                    <td width="5%" class="subtitle">{{ forloop.counter }}</td>
+                                    <td><a href="{{ japp.job.get_absolute_url }}" class="subtitle">{{ japp.job }}</a></td>
+                                    <td><a class="button is-small is-info" href="#" class="subtitle">{{ japp.status }}</a></td>
                                 </tr>
                             {% empty %}
-                                <h2 class="title">You have no Applications Yet!</h2>
+                                <h1 class="title">Sed. You have no Applications Yet!.</h1>
                                 <p class="subtitle is-4">Every applicant makes a difference. <b>APPLY NOW!</b></p>
                             {% endfor %}
                         
                         </tbody>
                     </table>
+                </div>
+                <div class="column is-5 is-hidden-touch">
+                    <figure class="image is-3by2">
+                        <img src="{% static 'imgs/int.svg' %}" alt="Job something smh">
+                    </figure>
                 </div>
             </div>
         </div>

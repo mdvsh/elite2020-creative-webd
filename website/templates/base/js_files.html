@@ -1,24 +1,21 @@
 {% load static %}
 <script src='{% static "js/jquery-3.3.1.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.5.0/feather.min.js"></script>
 <script src='{% static "js/ajax.js" %}' type="text/javascript" crossorigin="anonymous"></script>
 <script>
+    {% comment %} $(document).ready(function(){
+        $("input[type='button']").click(function(){
+            var radioValue = $("input[name='stat']:checked").val();
+            if(radioValue){
+                alert("Status - " + radioValue);
+            }
+        });
+    }); {% endcomment %}
     var dropdown = document.querySelector('.dropdown');
     dropdown.addEventListener('click', function(event) {
     event.stopPropagation();
     dropdown.classList.toggle('is-active');
     });
-    $("a").on('click', function(event) {
-        if (this.hash !== "") {
-        event.preventDefault();
-        var hash = this.hash;
-        $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 800, function(){
-            window.location.hash = hash;
-        });
-        }
-    });
+
 </script>
 <script async type="text/javascript" src="{% static 'js/hamburger.js' %}"></script>
 {% comment %} <script src='{% static "js/three.min.js" %}' type="text/javascript" crossorigin="anonymous"></script>

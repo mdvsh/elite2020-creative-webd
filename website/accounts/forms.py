@@ -5,8 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from .models import Applicant
 from captcha.fields import ReCaptchaField
-from django.core import validators
-from django.core.exceptions import ValidationError
 
 User = get_user_model()
 
@@ -19,18 +17,18 @@ class ApplicantRegForm(forms.ModelForm):
         model = User
         fields = ('name', 'email')
 
-    def clean_password2(self):
-        data = self.cleaned_data
-        password1 = data.get('password1')
-        password2 = data.get('password2')
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError('The passwords you entered are not the same')
-        return password1
+    def clean_password(self):
+        cd = self.cleaned_data
+        pswd1 = cd.get('password1')
+        pswd2 = cd.get('password2')
+        if (pswd1 and pswd2) and (pswd1 != pswd2):
+            raise forms.ValidationError("The entered passwords don't match. Please try again.")
+        return pswd1
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
         foo = User.objects.filter(email=email)
-        if foo.exists():raise ValidationError("The provided email already exists in the Database.")
+        if foo.exists():raise forms.ValidationError("The provided email already exists in the Database.")
         return email
 
     @transaction.atomic
@@ -63,13 +61,13 @@ class AdminUserCreationForm(forms.ModelForm):
         model = User
         fields = ('name', 'email',)
 
-    def clean_password2(self):
-        data = self.cleaned_data
-        password1 = data.get('password1')
-        password2 = data.get('password2')
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError('The passwords you entered are not the same')
-        return password1
+    def clean_password(self):
+        cd = self.cleaned_data
+        pswd1 = cd.get('password1')
+        pswd2 = cd.get('password2')
+        if (pswd1 and pswd2) and (pswd1 != pswd2):
+            raise forms.ValidationError("The entered passwords don't match. Please try again.")
+        return pswd1
         
     # Function to save the user once the passwords match, also hash the passwords
     def save(self, commit=True):
