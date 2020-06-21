@@ -12,10 +12,10 @@ from jobs.models import Job
 
 def main():
 
-    lipsum_desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum ipsum. Nulla lobortis egestas mattis. Aliquam id luctus ligula. Etiam dignissim convallis purus a lacinia. Nullam quis molestie libero."
+    lipsum_desc  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur non neque rutrum pretium. Vivamus dictum hendrerit mauris eu imperdiet. Donec efficitur consequat lectus, et volutpat lectus condimentum quis. Suspendisse.'
 
     jobs = {
-        "Volunteering" : ["Peaceful Volunteer", "Volunteer", "Enlistee", "Private"],
+        "Volunteering" : ["Volunteer", "Enlistee"],
         "Engineering" : ["Backend Developer", "Frontend Developer", "iOS Developer", "Full-Stack Engineer"],
         "Creative" : ["Graphic Designer", "Video Editor", "Creative Content Writer", "Motion Graphics Animator", "3D Designer"],
         "Operations" : ["Data Analyst", "Risk Analyst", "BizOp Manager"],
@@ -32,16 +32,14 @@ def main():
 
 
     gen_jobs = {
-        'Peaceful Volunteer' :{'work_type':"fulltime", 'age':'teen', 'pay':10000, 'desc':lipsum_desc},
-        'Volunteer' :{'work_type':"internship", 'age':'kiddo', 'pay':5000, 'desc':lipsum_desc},
-        'Enlistee' : {'work_type':"fulltime", 'age':'legal', 'pay':45000, 'desc':lipsum_desc},
-        'Private' : {'work_type':"fulltime", 'age':'legal', 'pay':55000, 'desc':lipsum_desc},
+        'Volunteer' :{'work_type':"internship", 'age':'teen', 'pay':5000, 'desc':lipsum_desc},
+        'Enlistee' : {'work_type':"fulltime", 'age':'teen', 'pay':45000, 'desc':lipsum_desc},
         'Backend Developer': {'work_type':"fulltime", 'age':'legal', 'pay':50000, 'desc':lipsum_desc},
         'Frontend Developer': {'work_type':"fulltime", 'age':'teen', 'pay':40000, 'desc':lipsum_desc}, 
         'iOS Developer': {'work_type':"internship", 'age':'teen', 'pay':45000, 'desc':lipsum_desc}, 
         'Full-Stack Engineer': {'work_type':"fulltime", 'age':'legal', 'pay':60000, 'desc':lipsum_desc}, 
         'Graphic Designer': {'work_type':"internship", 'age':'kiddo', 'pay':30000, 'desc':lipsum_desc}, 
-        'Video Editor': {'work_type':"fulltime", 'age':'kiddo', 'pay':35000, 'desc':lipsum_desc}, 
+        'Video Editor': {'work_type':"fulltime", 'age':'teen', 'pay':35000, 'desc':lipsum_desc}, 
         'Creative Content Writer': {'work_type':"fulltime", 'age':'teen', 'pay':25000, 'desc':lipsum_desc}, 
         'Motion Graphics Animator': {'work_type':"internship", 'age':'legal', 'pay':40000, 'desc':lipsum_desc}, 
         '3D Designer': {'work_type':"fulltime", 'age':'teen', 'pay':40000, 'desc':lipsum_desc}, 

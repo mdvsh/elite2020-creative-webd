@@ -19,8 +19,8 @@
     </div>
 </nav>
 
-<div class="columns is-mobile">
-    <div class="column is-6 is-fullscreen-mobile">
+<div class="columns">
+    <div class="column is-6">
         <div class="card">
         <header class="card-header">
             <p class="card-header-title">
@@ -45,7 +45,7 @@
                             <td><a href="{% url 'admin_job_info' p_app.job.pk %}">View</a></td>
                         </tr>
                         {% empty %}
-                            <p class="subtitle is-5 mb-2">You have no pending applications.</p>
+                            <p class="subtitle is-5 mb-2 mt-2 ml-4">You have no pending applications.</p>
                         {% endfor %}
                     </tbody>
                 </table> 
@@ -60,7 +60,7 @@
             <p>Message from HR</p>
         </div>
             <div class="message-body">
-                <b>Make a decision for an applicant in the order by which they appear on the screen. Decide on the pending applications first.</b><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor.
+                <b>Make a decision for an applicant in the order by which they appear on the screen. Decide for the pending applications first.</b><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor.
             </div>
         </article>
     </div>
