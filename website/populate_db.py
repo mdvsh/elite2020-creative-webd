@@ -15,6 +15,7 @@ def main():
     lipsum_desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum ipsum. Nulla lobortis egestas mattis. Aliquam id luctus ligula. Etiam dignissim convallis purus a lacinia. Nullam quis molestie libero."
 
     jobs = {
+        "Volunteering" : ["Peaceful Volunteer", "Volunteer", "Enlistee", "Private"],
         "Engineering" : ["Backend Developer", "Frontend Developer", "iOS Developer", "Full-Stack Engineer"],
         "Creative" : ["Graphic Designer", "Video Editor", "Creative Content Writer", "Motion Graphics Animator", "3D Designer"],
         "Operations" : ["Data Analyst", "Risk Analyst", "BizOp Manager"],
@@ -31,6 +32,10 @@ def main():
 
 
     gen_jobs = {
+        'Peaceful Volunteer' :{'work_type':"fulltime", 'age':'teen', 'pay':10000, 'desc':lipsum_desc},
+        'Volunteer' :{'work_type':"internship", 'age':'kiddo', 'pay':5000, 'desc':lipsum_desc},
+        'Enlistee' : {'work_type':"fulltime", 'age':'legal', 'pay':45000, 'desc':lipsum_desc},
+        'Private' : {'work_type':"fulltime", 'age':'legal', 'pay':55000, 'desc':lipsum_desc},
         'Backend Developer': {'work_type':"fulltime", 'age':'legal', 'pay':50000, 'desc':lipsum_desc},
         'Frontend Developer': {'work_type':"fulltime", 'age':'teen', 'pay':40000, 'desc':lipsum_desc}, 
         'iOS Developer': {'work_type':"internship", 'age':'teen', 'pay':45000, 'desc':lipsum_desc}, 
@@ -47,7 +52,7 @@ def main():
         'Recruiter':{'work_type':"internship", 'age':'teen', 'pay':20000, 'desc':lipsum_desc}, 
         'PR Specialist': {'work_type':"fulltime", 'age':'legal', 'pay':40000, 'desc':lipsum_desc}, 
         'Produt Manager': {'work_type':"fulltime", 'age':'boomer', 'pay':55000, 'desc':lipsum_desc}, 
-        '(Technical) Program Manager': {'work_type':"internship", 'age':'mid-life-crisis', 'pay':65000, 'desc':lipsum_desc}
+        '(Technical) Program Manager': {'work_type':"internship", 'age':'mid-life-crisis', 'pay':65000, 'desc':lipsum_desc},
         }
 
     def add_team(name):

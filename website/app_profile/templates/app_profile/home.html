@@ -15,9 +15,9 @@
                         <div class="media">
                         <div class="media-left">
                             <figure class="image is-96x96">
-                            {% if japp.applicant.gender == 'MALE' or japp.applicant.gender == 'Male' %}
+                            {% if japp.applicant.gender == 'male' or japp.applicant.gender == 'Male' %}
                                 <img src="{% static 'imgs/male_user.svg' %}" alt="Placeholder image">
-                            {% elif japp.applicant.gender == 'FEMALE' or  japp.applicant.gender == 'Female' %}
+                            {% elif japp.applicant.gender == 'female' or  japp.applicant.gender == 'Female' %}
                                 <img src="{% static 'imgs/fem_user.svg' %}" alt="Placeholder image">
                             {% else %}
                                 <img src="https://via.placeholder.com/150" alt="Placeholder image">
