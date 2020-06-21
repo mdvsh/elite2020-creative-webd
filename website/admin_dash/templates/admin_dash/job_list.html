@@ -19,6 +19,8 @@
                 <td width="5%"><i class="fa fa-user-circle"></i></td>
                 {% elif job.team.name == 'Product'%}
                 <td width="5%"><i class="fa fa-file"></i></td>
+                {% elif job.team.name == 'Volunteering'%}
+                <td width="5%"><i class="fa fa-hands-helping"></i></td>
                 {% endif %}
                 <td><a href="{% url 'admin_job_info' job.pk %}">{{ job }}</a></td>
                 <td><a class="button is-small is-warning is-rounded" href="{% url 'job_update' job.pk %}">Edit</a></td>
