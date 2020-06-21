@@ -7,14 +7,17 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Home | The RFF</title>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-            <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> 
-            <link href="https://fonts.googleapis.com/css2?family=Bangers&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-        </header>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>        </header>
         <body>
-
         {% comment %} Inject Common Navbar {% endcomment %}
-        {% include 'base/nav.html' %}
+
+        {% url 'home' as home_url %}
+        {% if request.get_full_path == home_url %}{% include 'base/nav_home.html' %}
+        {% else %} {% include 'base/nav.html' %}
+        {% endif %}
 
         {% if messages %}
             {% for message in messages %}

@@ -48,8 +48,8 @@ class Team(models.Model):
 
 
 # Declartory class for a single Applicant
-GENDERS = (('MALE', 'Male'), ('FEMALE', 'Female'))
-AGE = (('kiddo', 'Kiddo'), ('teen', 'Teenager'), ('legal', 'Legal'), ('mid-life crisis', 'Mid-Life Crisis'), ('boomer', 'Boomer'))
+GENDERS = (('male', 'Male'), ('female', 'Female'))
+AGE = (('kiddo', 'Kiddo'), ('teen', 'Teenager'), ('legal', 'Legal'), ('mid-life-crisis', 'Mid-Life Crisis'), ('boomer', 'Boomer'))
 class Applicant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     preference = models.ForeignKey(Team, on_delete=models.SET_NULL, blank=True, null=True)

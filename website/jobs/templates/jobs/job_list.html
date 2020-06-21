@@ -1,26 +1,40 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load widget_tweaks %}
 {% block content %}
     <div class="section">
         <div class="container">
             <div class="columns">
                 <div class="column is-3 is-pulled-left is-hidden-touch">
-                    <p class="title is-5">Filter By:</p>
-                    <div class="dropdown">
-                        <div class="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                            <span>Teams</span>
-                            <span class="icon is-small"><i class="fas fa-angle-down" aria-hidden="true"></i></span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                            {% for t in dist_teams %}
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">{{ t }}</a>
+                    <p class="title is-5">Find An Opening For You:</p>
+                    <div class='field'>
+                        <form method="get">
+                            {% for field in filter.form %}
+
+                                <div class="field">
+                                {{ field.label_tag }}
+
+                                {% if form.is_bound %}
+                                    {% if field.errors %}
+                                        {% render_field field class="input is-danger" %}
+                                        {% for error in field.errors %}
+                                            <p class="help is-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% else %}
+                                        {% render_field field class="input" %}
+                                    {% endif %}
+                                {% else %}
+                                    {% render_field field class="input" %}
+                                {% endif %}
+
+                                {% if field.help_text %}
+                                    <p class="help">{{ field.help_text }}</p>
+                                {% endif %}
                                 </div>
+
                             {% endfor %}
-                        </div>
+                            <button class="button is-link is-light" type="submit">Search</button>
+                        </form>
                     </div>
                     <hr>
                     <p class="title is-6 mt-4">Workplace Culture@KKK</p><br>
@@ -31,7 +45,7 @@
                 <div class="column is-8 is-offset-1">
                     <h1 class="title is-3">Current Openings</h1>
                     <p class="subtitle is-4">In The RFF</p>
-                    {% for job in job_list %}
+                    {% for job in filter.qs %}
                         <article class="media box">
                             <figure class="media-left">
                             <p class="image is-48x48">
@@ -50,7 +64,7 @@
                             </figure>
                             <div class="media-content">
                                 <div class="content">
-                                    <p><strong><a href="{{ job.get_absolute_url }}"> {{ job.title }} </a></strong><small>@KoolKidsKlan</small>
+                                    <p><strong><a href="{{ job.get_absolute_url }}"> {{ job.title }} </a></strong><small>@KoodKidsKlub</small>
                                     <br>{{ job.desc|truncatewords:30 }}</p>
                                     <nav class="level is-mobile">
                                         <div class="level-left">
@@ -63,8 +77,8 @@
                         </article>
                         
                     {% empty %}
-                        <h1 class="title is-3">No Job Opening for Now.</h1>
-                        <p class="subtitle is-4">Check back later.</p>
+                        <h1 class="title is-4 mt-4">No Job Opening for now.</h1>
+                        <p class="subtitle is-5">Check back later.</p>
                     {% endfor %}
                 </div>
             </div>

@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{% url 'home' %}">
@@ -13,7 +13,9 @@
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{% url 'home' %}">Home</a>
+                <a class="navbar-item" href="#home">Home</a>
+                <a class="navbar-item" href="#about">About</a>
+                <a class="navbar-item" href="#perks">Perks</a>
                 <a class="navbar-item" href="{% url 'jobs' %}">Jobs</a>
             </div>
 
@@ -27,7 +29,6 @@
                     <div class="buttons">
                     {% if not request.user.is_authenticated %}
                     <a class="button is-small is-warning is-rounded" href="{% url 'login' %}">Log in</a>
-                    <a class="button is-info is-small is-rounded" href="{% url 'applicant_reg' %}"><strong>Join Us</strong></a>
                     {% comment %} <a class="button is-small is-warning is-rounded">(Admin) Dash</a> {% endcomment %}
                     {% else %}
                     {% if request.user.is_staff %}

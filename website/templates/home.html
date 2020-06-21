@@ -1,19 +1,122 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <section class="section hero is-medium has-text-centered">
+
+    <section class="section pt-6 has-navbar-fixed-top" id='home'>
         <div class="container">
-        <div class="columns">
-            <div class="column is-three-fifths">
-                <div class="apple-masked apple-texture apple-type">
-                    <h2>THE RESISTANCE FIGHTING FORCE.</h2>
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-2 has-text-black mt-6">Kool Kids Klub</h1>
+                    <p class="subtitle is-4 lead mt-3 mb-4">Help us overthrow the Tyrannous New World Order by <br>
+                    joining the Resistance Fighting Force.
+                    </p>
+                    <a href="{% url 'applicant_reg' %}" class="button is-link is-medium mt-3">
+                        <i class="mr-2" data-feather="chevrons-right" height="30" width="30"></i>
+                    Join The RFF
+                    </a>
+                    <br><br>
+                    <p class="has-text-dull is-small">
+                    <u>Disclaimer</u>: The Kool Kids Klub (KKK) is in no way related to <b>the</b> KKK.
+                    </p>
+
                 </div>
             </div>
-            <div class="column">
-                <figure class="image">
-                <img src="{% static 'imgs/peeps.jpg' %}">
-                </figure>                        
+            <div class="columns is-centered mt-2">
+                <div class="column is-10">
+                    <figure class="image">
+                    <img class="main-img" src="{% static 'imgs/bw2.jpg' %}" alt="Rise against Tyrrany." />
+                    </figure>
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="section hero pt-6" id="keanu">
+        <div class="container">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-8-touch">
+                    <h3 class="title dis-4 has-text-black">The Illuminati &amp; Babir Koyal are not breathtaking. REVOLT!</h3>
+                    <p class="subtitle is-5 has-text-dull">&mdash; Keanu Reeves <em>2027</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-light pt-6" id="about">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-6-touch has-text-centered">
+                    <h2 class="title is-3 has-text-black mt-2">About Us</h2>
+                    <p class="subtitle has-text-dull is-5 mt-1">
+                        How the Kool Kids Klub became the ultimate resistance against the New World Order.
+                    </p>
+                    <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus hendrerit nisl non eleifend. Aliquam consectetur eget sapien ac scelerisque. Pellentesque vestibulum orci a hendrerit cursus. Maecenas pulvinar metus vitae lobortis ornare. Aliquam vitae varius est, ac tristique diam. Morbi pretium rutrum porta. Integer feugiat odio magna. Vestibulum placerat aliquet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="section" style="color: black; margin-top: 20px; border-bottom: 1px solid lightgrey;" id="perks">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-6-touch has-text-centered">
+                <h2 class="title is-3 has-text-black mt-2">Perks</h2>
+                <p class="subtitle has-text-dull is-5 mb-5">
+                    All active members of The RFF Enjoy amazing perks like
+                </p>
+            </div>
+        </div>
+        <div class="item columns">
+            <div class="column is-3" style="border: 0px solid red;">
+                <figure style="margin:auto; display:block;" class="image is-48x48">
+                    <img src="{% static 'imgs/wd.svg' %}" alt="">
+                </figure>
+                <p class="item-title" style="text-align: center; margin-top: 10px;">
+                    <span style="font-weight: bold;">Handsome Pay</span>
+                </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    Paid In Wadiyan Dollars, with blessing from The Supreme Leader of Wadiya.
+                </p>
+            </div>
+            <div class="column is-3" style="border: 0px solid red;">
+                <figure style="margin:auto; display:block;" class="image is-48x48">
+                    <img src="{% static 'imgs/rg.svg' %}" alt="">
+                </figure>
+                <p class="item-title" style="text-align: center; margin-top: 10px;">
+                    <span style="font-weight: bold;">GTA Experience IRL</span>
+                </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    Takedown the Illuminati by doing missions assigned by the KKK HQ.
+                </p>
+            </div>
+            <div class="column is-3" style="border: 0px solid red;">
+                <figure style="margin:auto; display:block;" class="image is-48x48">
+                    <img src="{% static 'imgs/res.svg' %}" alt="">
+                </figure>
+                <p class="item-title" style="text-align: center; margin-top: 10px;">
+                    <span style="font-weight: bold;">Free Supply of Resistors</span>
+                </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    Get a bag full of resistors (and bad puns) delivered to you every month.
+                </p>
+            </div>
+            <div class="column is-3" style="border: 0px solid red;">
+                <figure style="margin:auto; display:block;" class="image is-48x48">
+                    <img src="{% static 'imgs/doge.svg' %}" alt="">
+                </figure>
+                <p class="item-title" style="text-align: center; margin-top: 10px;">
+                    <span style="font-weight: bold;">Dank Community</span>
+                </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    Get access to the dankest group of like-minded people blessed by Keanu himself.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    feather.replace()
+    </script>
 {% endblock content %}
