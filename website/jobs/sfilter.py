@@ -4,4 +4,4 @@ import django_filters
 class JobFilter(django_filters.FilterSet):
     class Meta:
         model = Job
-        fields = ['team', 'age']
+        fields = ['team','work_type', 'age']

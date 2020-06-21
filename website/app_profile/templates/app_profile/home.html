@@ -19,6 +19,8 @@
                                 <img src="{% static 'imgs/male_user.svg' %}" alt="Placeholder image">
                             {% elif japp.applicant.gender == 'FEMALE' or  japp.applicant.gender == 'Female' %}
                                 <img src="{% static 'imgs/fem_user.svg' %}" alt="Placeholder image">
+                            {% else %}
+                                <img src="https://via.placeholder.com/150" alt="Placeholder image">
                             {% endif %}
                             </figure>
                         </div>

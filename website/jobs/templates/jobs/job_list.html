@@ -6,7 +6,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-3 is-pulled-left is-hidden-touch">
-                    <p class="title is-5">Find An Opening:</p>
+                    <p class="title is-5">Find An Opening For You:</p>
                     <div class='field'>
                         <form method="get">
                             {% for field in filter.form %}
@@ -64,7 +64,7 @@
                             </figure>
                             <div class="media-content">
                                 <div class="content">
-                                    <p><strong><a href="{{ job.get_absolute_url }}"> {{ job.title }} </a></strong><small>@KoolKidsKlan</small>
+                                    <p><strong><a href="{{ job.get_absolute_url }}"> {{ job.title }} </a></strong><small>@KoodKidsKlub</small>
                                     <br>{{ job.desc|truncatewords:30 }}</p>
                                     <nav class="level is-mobile">
                                         <div class="level-left">
@@ -77,8 +77,8 @@
                         </article>
                         
                     {% empty %}
-                        <h1 class="title is-3 mt-4">No Job Opening for now.</h1>
-                        <p class="subtitle is-4">Check back later.</p>
+                        <h1 class="title is-4 mt-4">No Job Opening for now.</h1>
+                        <p class="subtitle is-5">Check back later.</p>
                     {% endfor %}
                 </div>
             </div>

@@ -8,8 +8,8 @@ from accounts.models import Applicant, Team
 User = settings.AUTH_USER_MODEL
 
 # Create your models here.
-WORK_TYPES = (('Full-Time', 'fulltime'), ('Internship', 'internship'))
-AGE = (('kiddo', 'Kiddo'), ('Teen', 'Teenager'), ('Legal', 'Legal'), ('Mid-life crisis', 'Mid-Life Crisis'), ('Boomer', 'boomer'))
+WORK_TYPES = (('fulltime', 'Full-Time'), ('internship', 'Internship'))
+AGE = (('kiddo', 'Kiddo'), ('teen', 'Teenager'), ('legal', 'Legal'), ('mid-life-crisis', 'Mid-Life Crisis'), ('boomer', 'Boomer'))
 STATUS = (('Applied', 'applied'), ('Shorlisted', 'shortlisted'), ('Accepted', 'accepted'), ('Rejected', 'rejected'))
 
 # The Job Model (VIMP!!! jk)
@@ -18,7 +18,7 @@ class Job(models.Model):
     slug = models.SlugField(blank=True)
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, blank=True, null=True)
     work_type = models.CharField('Opening Type.', max_length=10, choices=WORK_TYPES)
-    age = models.CharField('Required candidate\'s age.', max_length=20, choices=AGE, null=True, blank=True)
+    age = models.CharField('Applicant Age', max_length=20, choices=AGE, null=True, blank=True)
     pay = models.PositiveIntegerField(blank=True, null=True)
     desc = RichTextField()
     create_date = models.DateTimeField(auto_now_add=True)
