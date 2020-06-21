@@ -16,6 +16,15 @@ The Deployed Website [here](https://sharmadhavs.pythonanywhere.com)
 ---
 
 ### Credits
- Madhav Shekhar Sharma 
+- Bulma CSS framework + some custom styling
+- IBM Plex Sans and Open Sans from Google Fonts
+- Illustrations from [Undraw](https://undraw.co/illustrations)
+- Icons from [Icons8](https://icons8.com/icon)
+- Landing Photo from [Unsplash](https://unsplash.com)
+- Login/Sign-Up gradient from [coolbackgrounds.io](https://coolbackgrounds.io/)
+ 
+ 
  
  **Special thanks to  Soumitra Shewale for testing every feature.**
+ 
+
