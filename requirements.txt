@@ -18,6 +18,7 @@ importlib-metadata==1.6.0
 jupyter==1.0.0
 pipenv==2018.11.26
 psutil==5.7.0
+python-decouple==3.3
 pytz==2020.1
 QtPy==1.9.0
 sqlparse==0.3.1
