@@ -102,6 +102,7 @@ class AdminJobsDetail(AdminRequiredMixin, DetailView):
     template_name = 'admin_dash/job_info.html'
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        apps = JobApplication.objects.filter(~Q(status='rejected') & ~Q(status='accepted'))
+        # print(type(ctx['job']))
+        apps = JobApplication.objects.filter(~Q(status='rejected') & ~Q(status='accepted') & Q(job=ctx['job']))
         ctx['applications'] = apps
         return ctx
